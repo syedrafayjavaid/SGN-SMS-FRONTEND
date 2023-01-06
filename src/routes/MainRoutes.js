@@ -3,7 +3,7 @@ import { lazy } from 'react';
 // project import
 import Loadable from 'components/Loadable';
 import MainLayout from 'layout/MainLayout';
-import UserDetai from 'pages/user/UserDetail';
+
 
 
 // render - dashboard
@@ -43,6 +43,10 @@ const AdmissionCreate = Loadable(lazy(() => import('pages/admission/AdmissionCre
 const AdmissionDetail = Loadable(lazy(() => import('pages/admission/AdmissionDetail')));
 const AdmissionEdit = Loadable(lazy(() => import('pages/admission/AdmissionEdit')));
 
+// Video call routes
+const WelcomeVideoCall = Loadable(lazy(() => import('pages/videocall/welcomePage/Welcome')));
+const Videocall = Loadable(lazy(() => import('pages/videocall/Videocall')));
+
 
 
 
@@ -50,6 +54,13 @@ const Typography = Loadable(lazy(() => import('pages/components-overview/Typogra
 const Color = Loadable(lazy(() => import('pages/components-overview/Color')));
 const Shadow = Loadable(lazy(() => import('pages/components-overview/Shadow')));
 const AntIcons = Loadable(lazy(() => import('pages/components-overview/AntIcons')));
+
+
+
+
+
+
+
 
 // ==============================|| MAIN ROUTING ||============================== //
 
@@ -209,10 +220,20 @@ const MainRoutes = {
                 }
             ]
         },
-        // {
-        //     path: 'videocall',
-        //     element: <Videocall />
-        // },
+        {
+            path: 'videocall',
+            children: [
+                {
+                    path: '',
+                    element: <WelcomeVideoCall />
+                },
+                {
+                    path: 'session',
+                    element: <Videocall />
+                }
+
+            ]
+        },
         {
             path: 'dashboard',
             children: [

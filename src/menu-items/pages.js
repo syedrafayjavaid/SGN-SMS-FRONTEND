@@ -9,8 +9,6 @@ const icons = {
     BookOutlined,
     UsergroupAddOutlined,
     VideoCallIcon
-
-
 };
 
 
@@ -53,6 +51,16 @@ const pages = {
             // target: true
 
         },
+        {
+            id: 'videocall',
+            title: 'Videocall',
+            type: 'item',
+            url: '/videocall',
+            icon: icons.VideoCallIcon,
+            // target: true
+
+        },
+
 
     ]
 };

@@ -1,15 +1,16 @@
-// third-party
-import { configureStore } from '@reduxjs/toolkit';
+import { createStore } from 'redux';
+import mainReducer from './reducer';
+import { composeWithDevTools } from '@redux-devtools/extension';
+const store = createStore(
+    mainReducer,
+    composeWithDevTools()
+);
 
-// project import
-import reducers from './reducers';
 
-// ==============================|| REDUX TOOLKIT - MAIN STORE ||============================== //
 
-const store = configureStore({
-    reducer: reducers
-});
 
-const { dispatch } = store;
 
-export { store, dispatch };
+export { store };
+
+
+

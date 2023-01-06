@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link as RouterLink } from 'react-router-dom';
+import { Link as RouterLink, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 
@@ -30,15 +30,17 @@ import LoginAs from './LoginAs';
 
 // assets
 import { EyeOutlined, EyeInvisibleOutlined } from '@ant-design/icons';
+import { environment } from 'config';
 
 
 
 // ============================|| FIREBASE - LOGIN ||============================ //
 
 const AuthLogin = () => {
+    const navigate = useNavigate()
     const [checked, setChecked] = React.useState(false);
     const [showPassword, setShowPassword] = React.useState(false);
-    const [type, setType] = React.useState('admin');
+    const [type, setType] = React.useState('teachers');
     const handleClickShowPassword = () => {
         setShowPassword(!showPassword);
     };
@@ -52,9 +54,23 @@ const AuthLogin = () => {
         setType(type);
     }
 
-    const login = () => {
+    const login = (data) => {
 
-        console.log("It is the axios call");
+        axios.post(`${environment.base_url}/api/v1/${type}/login`, data)
+            .then((res) => {
+                console.log("The login response has", res.data.data);
+                if (res.data.token) {
+                    const user = res.data.data;
+                    window.sessionStorage.setItem("token", res.data.token)
+                    window.sessionStorage.setItem("login", true)
+                    window.sessionStorage.setItem("teacherId", user.teacherId)
+                    window.sessionStorage.setItem("email", user.email)
+                    window.sessionStorage.setItem("name", user.firstName)
+                    navigate("/", { replace: true });
+                }
+            }).catch((error) => {
+                console.log("Login error", error);
+            })
 
     }
 
@@ -73,17 +89,8 @@ const AuthLogin = () => {
                 onSubmit={async (values, { setErrors, setStatus, setSubmitting }) => {
                     try {
                         setStatus({ success: false });
-                        setSubmitting(false);
-                        const data = {};
-                        data.email = values.email;
-                        data.password = values.password;
-                        axios.post(`http://localhost:3001/api/v1/${type}/login`, data).then((res) => {
-                            console.log("The incoming reponse is ", res);
-                        }).catch((err) => {
-                            alert(err.response.data.error)
-                        })
-
-                        // console.log("Yes this is called on submit");
+                        setSubmitting(true);
+                        login(values)
                     } catch (err) {
                         setStatus({ success: false });
                         setErrors({ submit: err.message });
@@ -184,20 +191,20 @@ const AuthLogin = () => {
                                         type="submit"
                                         variant="contained"
                                         color="primary"
-                                        onClick={login}
+
                                     >
                                         Login
                                     </Button>
                                 </AnimateButton>
                             </Grid>
-                            <Grid item xs={12}>
+                            {/* <Grid item xs={12}>
                                 <Divider>
                                     <Typography variant="caption"> Login As</Typography>
                                 </Divider>
                             </Grid>
                             <Grid item xs={12}>
                                 <LoginAs loginType={loginType} />
-                            </Grid>
+                            </Grid> */}
                         </Grid>
                     </form>
                 )}

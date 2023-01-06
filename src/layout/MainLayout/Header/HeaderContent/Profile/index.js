@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import { useRef, useState } from 'react';
 
+
 // material-ui
 import { useTheme } from '@mui/material/styles';
 import {
@@ -57,7 +58,11 @@ const Profile = () => {
     const theme = useTheme();
 
     const handleLogout = async () => {
-        // logout
+        // removing the login token and password
+        sessionStorage.removeItem('token')
+        sessionStorage.setItem('login', false)
+        // refreshing page
+        window.location.reload(false);
     };
 
     const anchorRef = useRef(null);
@@ -98,7 +103,7 @@ const Profile = () => {
             >
                 <Stack direction="row" spacing={2} alignItems="center" sx={{ p: 0.5 }}>
                     <Avatar alt="profile user" src={avatar1} sx={{ width: 32, height: 32 }} />
-                    <Typography variant="subtitle1">Rafay Javaid</Typography>
+                    <Typography variant="subtitle1">{sessionStorage.getItem('name')}</Typography>
                 </Stack>
             </ButtonBase>
             <Popper
