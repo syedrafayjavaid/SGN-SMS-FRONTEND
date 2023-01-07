@@ -18,7 +18,7 @@ let configEnv = {
         base_url: 'http://localhost:3005'
     },
     prod: {
-        base_url: 'http://52.87.88.244:3005'
+        base_url: 'https://sms-sgn-backend.onrender.com'
     },
     office: {
         base_url: ''
