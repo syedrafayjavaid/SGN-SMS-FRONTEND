@@ -9,9 +9,9 @@ import { connectWithWebSocket } from './utils/wssConnection/wssConnection';
 
 const App = () => {
 
-    useEffect(() => {
-        connectWithWebSocket();
-    }, []);
+    // useEffect(() => {
+    //     connectWithWebSocket();
+    // }, []);
     return (
         <ThemeCustomization>
             <ScrollTop>
