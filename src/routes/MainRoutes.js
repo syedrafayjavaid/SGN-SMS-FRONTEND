@@ -46,6 +46,11 @@ const AdmissionEdit = Loadable(lazy(() => import('pages/admission/AdmissionEdit'
 // Video call routes
 const WelcomeVideoCall = Loadable(lazy(() => import('pages/videocall/welcomePage/Welcome')));
 const Videocall = Loadable(lazy(() => import('pages/videocall/Videocall')));
+const VideoCallType = Loadable(lazy(() => import('pages/videocall/SelectionPage/SelectCallType')));
+const DirectVideoCall = Loadable(lazy(() => import('pages/videocall/directCall/DirectVideoCall')));
+const GroupVideoCall = Loadable(lazy(() => import('pages/videocall/groupCall/GroupVideoCall')));
+
+
 
 
 
@@ -228,8 +233,16 @@ const MainRoutes = {
                     element: <WelcomeVideoCall />
                 },
                 {
-                    path: 'session',
-                    element: <Videocall />
+                    path: 'type',
+                    element: <VideoCallType />
+                },
+                {
+                    path: 'directCall',
+                    element: <DirectVideoCall />
+                },
+                {
+                    path: 'groupCall',
+                    element: <GroupVideoCall />
                 }
 
             ]

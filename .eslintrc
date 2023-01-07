@@ -49,12 +49,7 @@
         "jsx-a11y/click-events-have-key-events": 0,
         "prefer-destructuring": 0,
         "no-shadow": 0,
-        "no-unused-vars": [
-            1,
-            {
-                "ignoreRestSiblings": false
-            }
-        ],
+        "no-unused-vars": 0,
         "prettier/prettier": 0,
     }
 }

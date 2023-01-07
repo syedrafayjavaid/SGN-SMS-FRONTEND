@@ -1,15 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import logo from '../../resources/logo.png';
 import UsernameInput from './components/Usernameinput';
 import SubmitButton from './components/StartButton';
+import AnimateButton from 'components/@extended/AnimateButton';
+import { Button } from '@mui/material';
+import VideoCallIcon from '@mui/icons-material/VideoCall';
 import { useNavigate } from 'react-router-dom';
 import { registerNewUser } from '../../../utils/wssConnection/wssConnection';
 import { setUsername } from '../../../store/actions/dashboardActions';
+import { connectWithWebSocket } from '../../../utils/wssConnection/wssConnection';
 
 import './Welcome.css';
 
 const Welcome = ({ saveUsername }) => {
+
   const email = sessionStorage.getItem('email');
   const [username, setUsername] = useState(email);
 
@@ -18,8 +23,12 @@ const Welcome = ({ saveUsername }) => {
   const handleSubmitButtonPressed = () => {
     registerNewUser(username);
     saveUsername(username);
-    navigate('session');
+    navigate('type');
   };
+  useEffect(() => {
+    connectWithWebSocket();
+  }, []);
+
 
   return (
     <div className='login-page_container background_main_color'>
@@ -30,8 +39,12 @@ const Welcome = ({ saveUsername }) => {
         <div className='login-page_title_container'>
           <h2>Start A Video Chat Session</h2>
         </div>
-        <UsernameInput username={username} setUsername={setUsername} />
-        <SubmitButton handleSubmitButtonPressed={handleSubmitButtonPressed} />
+        {/* <UsernameInput username={username} setUsername={setUsername} /> */}
+        <AnimateButton onClick={handleSubmitButtonPressed} >
+          <Button variant="contained" onClick={handleSubmitButtonPressed} style={{ backgroundColor: "black" }} startIcon={<VideoCallIcon />} fullwidth >
+            Start Session
+          </Button>
+        </AnimateButton>
       </div>
     </div>
   );

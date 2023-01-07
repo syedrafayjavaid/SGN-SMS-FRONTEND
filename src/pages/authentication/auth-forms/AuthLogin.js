@@ -48,7 +48,7 @@ const AuthLogin = () => {
 
     const theme = useTheme();
     const matchDownSM = useMediaQuery(theme.breakpoints.down('sm'));
-    const [type, setType] = React.useState('teacher');
+    const [type, setType] = React.useState('teachers');
     const navigate = useNavigate()
     const [checked, setChecked] = React.useState(false);
     const [showPassword, setShowPassword] = React.useState(false);
@@ -76,7 +76,9 @@ const AuthLogin = () => {
                     navigate("/", { replace: true });
                 }
             }).catch((error) => {
-                alert(error.response.data.error)
+                if (error.response?.data.error) {
+                    alert(error.response.data.error)
+                }
             })
 
     }

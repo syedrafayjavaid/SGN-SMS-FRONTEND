@@ -7,6 +7,7 @@ import './ActiveUsersList.css';
 const ActiveUsersList = ({ activeUsers, callState }) => {
   return (
     <div className='active_user_list_container'>
+      {console.log('activeeeeeeee', activeUsers)}
       {activeUsers.map((activeUser) =>
         <ActiveUsersListItem
           key={activeUser.socketId}
