@@ -1,5 +1,5 @@
 // ==============================|| THEME AND ENV CONFIG||============================== //
-const env = 'local'
+const env = 'prod'
 const config = {
     defaultPath: '/dashboard/default',
     fontFamily: `'Public Sans', sans-serif`,
@@ -18,10 +18,10 @@ let configEnv = {
         base_url: 'http://localhost:3005'
     },
     prod: {
-        base_url: 'some url'
+        base_url: 'http://52.87.88.244:3005'
     },
     office: {
-        base_url: 'some url'
+        base_url: ''
     }
 }
 

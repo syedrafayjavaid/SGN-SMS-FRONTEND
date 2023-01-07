@@ -6,7 +6,7 @@
     },
     "include": [
         "src/**/*"
-    ],
+, "src/pages/user/.js"    ],
     "exclude": [
         "node_modules"
     ]
