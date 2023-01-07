@@ -1,5 +1,5 @@
 // ==============================|| THEME AND ENV CONFIG||============================== //
-const env = 'local'
+const env = 'prod'
 const config = {
     defaultPath: '/dashboard/default',
     fontFamily: `'Public Sans', sans-serif`,
