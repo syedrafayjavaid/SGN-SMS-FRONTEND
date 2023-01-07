@@ -2,8 +2,9 @@ import React, { useRef, useEffect } from 'react';
 
 const styles = {
   videoContainer: {
-    width: '80%',
-    height: '80%'
+    width: '100%',
+    height: '100%',
+    position: 'relative'
   },
   videoElement: {
     width: '100%',

@@ -1,0 +1,24 @@
+.heading_title {
+  background: #0277bd !important;
+  font-size: 18px !important;
+  color: white !important;
+}
+
+.direct_call_dialog_caller_name {
+  font-size: 16px;
+  color: "#0277bd";
+}
+
+.direct_call_dialog_accept_button {}
+
+.direct_call_dialog_accept_button:hover {
+  background-color: green;
+  color: white;
+}
+
+.direct_call_dialog_reject_button {}
+
+.direct_call_dialog_reject_button:hover {
+  background-color: red;
+  color: white;
+}

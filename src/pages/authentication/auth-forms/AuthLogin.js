@@ -32,15 +32,26 @@ import LoginAs from './LoginAs';
 import { EyeOutlined, EyeInvisibleOutlined } from '@ant-design/icons';
 import { environment } from 'config';
 
+import PersonIcon from '@mui/icons-material/Person';
+import Person3Icon from '@mui/icons-material/Person3';
+import Person4Icon from '@mui/icons-material/Person4';
+
+
+// material-ui
+import { useTheme } from '@mui/material/styles';
+import { useMediaQuery } from '@mui/material';
 
 
 // ============================|| FIREBASE - LOGIN ||============================ //
 
 const AuthLogin = () => {
+
+    const theme = useTheme();
+    const matchDownSM = useMediaQuery(theme.breakpoints.down('sm'));
+    const [type, setType] = React.useState('teacher');
     const navigate = useNavigate()
     const [checked, setChecked] = React.useState(false);
     const [showPassword, setShowPassword] = React.useState(false);
-    const [type, setType] = React.useState('teachers');
     const handleClickShowPassword = () => {
         setShowPassword(!showPassword);
     };
@@ -49,10 +60,6 @@ const AuthLogin = () => {
         event.preventDefault();
     };
 
-    // Get login type
-    const loginType = (type) => {
-        setType(type);
-    }
 
     const login = (data) => {
 
@@ -69,7 +76,7 @@ const AuthLogin = () => {
                     navigate("/", { replace: true });
                 }
             }).catch((error) => {
-                console.log("Login error", error);
+                alert(error.response.data.error)
             })
 
     }
@@ -197,14 +204,47 @@ const AuthLogin = () => {
                                     </Button>
                                 </AnimateButton>
                             </Grid>
-                            {/* <Grid item xs={12}>
+                            <Grid item xs={12}>
                                 <Divider>
                                     <Typography variant="caption"> Login As</Typography>
                                 </Divider>
                             </Grid>
                             <Grid item xs={12}>
-                                <LoginAs loginType={loginType} />
-                            </Grid> */}
+                                <Stack
+                                    direction="row"
+                                    spacing={matchDownSM ? 1 : 2}
+                                    justifyContent={matchDownSM ? 'space-around' : 'space-between'}
+                                    sx={{ '& .MuiButton-startIcon': { mr: matchDownSM ? 0 : 1, ml: matchDownSM ? 0 : -0.5 } }}
+                                >
+                                    <Button
+                                        variant="outlined"
+                                        color="secondary"
+                                        fullWidth={!matchDownSM}
+                                        startIcon={<PersonIcon />}
+                                        onClick={() => setType('students')}
+                                    >
+                                        {"Student"}
+                                    </Button>
+                                    <Button
+                                        variant="outlined"
+                                        color="secondary"
+                                        fullWidth={!matchDownSM}
+                                        startIcon={<Person3Icon />}
+                                        onClick={() => setType('teachers')}
+                                    >
+                                        {'Teacher'}
+                                    </Button>
+                                    <Button
+                                        variant="outlined"
+                                        color="secondary"
+                                        fullWidth={!matchDownSM}
+                                        startIcon={< Person4Icon />}
+                                        onClick={() => setType('parents')}
+                                    >
+                                        {'Parent'}
+                                    </Button>
+                                </Stack>
+                            </Grid>
                         </Grid>
                     </form>
                 )}

@@ -27,35 +27,42 @@ const Videocall = ({ username, callState }) => {
       <Grid container spacing={2}>
         <DirectCall />
       </Grid>
-
-
       <br></br>
       <br></br>
       <br></br>
-
-
-
       <Grid container spacing={1}>
         <h2>
           Active users List
         </h2>
         <ActiveUsersList />
+
+
+      </Grid>
+
+      <br></br>
+      <br></br>
+      <br></br>
+      <hr></hr>
+      <br></br>
+      <br></br>
+      <br></br>
+
+      <Grid container >
         <h2>
           Group calls list
         </h2>
-
-
-
-
-      </Grid>
-      <Grid container >
         <GroupCallRoomsList />
       </Grid>
-      <br></br>   <br></br>
+
       <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+
       <Grid container spacing={1}>
         <GroupCall />
-
       </Grid>
 
 

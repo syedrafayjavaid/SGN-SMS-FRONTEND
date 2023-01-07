@@ -6,8 +6,7 @@ const styles = {
     width: '200px',
     height: '200px',
     zIndex: '9',
-    top: 0,
-    left: 20,
+    top: 120,
     position: 'relative',
   },
   videoElement: {

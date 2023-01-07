@@ -1,0 +1,14 @@
+.call_rejected_dialog {
+  position: relative;
+  width: 260px;
+  height: 60px;
+  top: calc(50% - 150px);
+  left: calc(50% - 200px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 999;
+  background-color: #A93226;
+  justify-content: center;
+  border-radius: 8px;
+}

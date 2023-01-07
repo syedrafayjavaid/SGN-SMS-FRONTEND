@@ -4,6 +4,7 @@ import GroupCallButton from '../GroupCallButton/GroupCallButton';
 import { callStates, setLocalCameraEnabled, setLocalMicrophoneEnabled } from '../../../../store/actions/callActions';
 import * as webRTCGroupCallHandler from '../../../../utils/webRTC/webRTCGroupCallHandler';
 import GroupCallRoom from '../GroupCallRoom/GroupCallRoom';
+import LocalVideoViewGroup from '../LocalVideoView/LocalVideoView';
 
 import { Grid, Typography } from '@mui/material';
 
@@ -20,13 +21,16 @@ const GroupCall = (props) => {
   };
 
   return (
-    <><Grid container>
+    <>
 
-      <Grid item xs={4}>
-        {!groupCallActive && localStream && callState !== callStates.CALL_IN_PROGRESS &&
-          <GroupCallButton onClickHandler={createRoom} label='Create room' />}
+      <Grid container>
+        <LocalVideoViewGroup localStream={localStream} />
+        <Grid item xs={8}></Grid>
+        <Grid item xs={4}>
+          {!groupCallActive && localStream && callState !== callStates.CALL_IN_PROGRESS &&
+            <GroupCallButton onClickHandler={createRoom} label='Create room' />}
+        </Grid>
       </Grid>
-    </Grid>
 
       {groupCallActive && <GroupCallRoom {...props} />}
       {groupCallActive && <GroupCallButton onClickHandler={leaveRoom} label='Leave room' />}

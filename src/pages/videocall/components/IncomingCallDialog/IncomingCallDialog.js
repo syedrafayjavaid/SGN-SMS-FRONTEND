@@ -3,14 +3,21 @@ import { acceptIncomingCallRequest, rejectIncomingCallRequest } from '../../../.
 
 import './IncomingCallDialog.css';
 
+import sound from './../../../resources/incoming_call.mp3';
+
 const IncomingCallDialog = ({ callerUsername }) => {
+
   const handleAcceptButtonPressed = () => {
     acceptIncomingCallRequest();
+
   };
 
   const handleRejectButtonPressed = () => {
     rejectIncomingCallRequest();
+
   };
+
+
 
   return (
     <div className='direct_call_dialog background_secondary_color'>
