@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import * as webRTCHandler from '../../../utils/webRTC/webRTCHandler';
 import * as webRTCGroupHandler from '../../../utils/webRTC/webRTCGroupCallHandler';
 import { Grid, Typography } from '@mui/material';
+import { connect } from 'react-redux';
 import MainCard from 'components/MainCard';
 import GroupCallRoomsList from '../components/GroupCallRoomsList/GroupCallRoomsList';
 import GroupCall from '../components/GroupCall/GroupCall';
@@ -34,4 +35,9 @@ const GroupVideoCall = () => {
     )
 }
 
-export default GroupVideoCall
+const mapStateToProps = ({ call, dashboard }) => ({
+    ...call,
+    ...dashboard
+});
+
+export default connect(mapStateToProps)(GroupVideoCall);

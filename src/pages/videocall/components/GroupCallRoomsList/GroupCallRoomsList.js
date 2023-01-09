@@ -7,10 +7,7 @@ const GroupCallRoomsList = (props) => {
   const { groupCallRooms } = props;
   return (
     <>
-      <div className='active_user_list_container'>
-        {groupCallRooms.map(room => <GroupCallRoomsListItem key={room.roomId} room={room} />)}
-      </div>
-
+      {groupCallRooms.map(room => <GroupCallRoomsListItem key={room.roomId} room={room} />)}
     </>
   );
 };

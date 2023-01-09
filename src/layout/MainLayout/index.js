@@ -54,27 +54,20 @@ const MainLayout = () => {
 
     }
 
-
-
     // checking the token is valid or not
     if (window.sessionStorage.getItem('token')) {
-        console.log("Token one is called");
         const jwtToken = window.sessionStorage.getItem('token');
         let decodedToken = jwtDecode(jwtToken);
         let currentDate = new Date();
 
         // JWT exp is in seconds
         if (decodedToken.exp * 1000 > currentDate.getTime()) {
-            console.log("token passed");
             validToken = true;
         } else {
-            console.log("token fail");
-
             validToken = false;
         }
     }
     else {
-        console.log("token fail");
         validToken = false;
     }
 

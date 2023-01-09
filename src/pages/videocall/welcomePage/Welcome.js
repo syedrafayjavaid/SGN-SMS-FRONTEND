@@ -15,21 +15,11 @@ import './Welcome.css';
 
 const Welcome = ({ saveUsername }) => {
 
-  const email = sessionStorage.getItem('email');
-  const [username, setUsername] = useState(email);
-
   const navigate = useNavigate();
 
   const handleSubmitButtonPressed = () => {
-    registerNewUser(username);
-    saveUsername(username);
     navigate('type');
   };
-  useEffect(() => {
-    connectWithWebSocket();
-  }, []);
-
-
   return (
     <div className='login-page_container background_main_color'>
       <div className='login-page_login_box background_secondary_color'>
@@ -41,7 +31,7 @@ const Welcome = ({ saveUsername }) => {
         </div>
         {/* <UsernameInput username={username} setUsername={setUsername} /> */}
         <AnimateButton onClick={handleSubmitButtonPressed} >
-          <Button variant="contained" onClick={handleSubmitButtonPressed} style={{ backgroundColor: "black" }} startIcon={<VideoCallIcon />} fullwidth >
+          <Button variant="contained" onClick={handleSubmitButtonPressed} style={{ backgroundColor: "black" }} startIcon={<VideoCallIcon />} fullwidth='true' >
             Start Session
           </Button>
         </AnimateButton>
@@ -50,10 +40,6 @@ const Welcome = ({ saveUsername }) => {
   );
 };
 
-const mapActionsToProps = (dispatch) => {
-  return {
-    saveUsername: username => dispatch(setUsername(username))
-  };
-};
 
-export default connect(null, mapActionsToProps)(Welcome);
+
+export default Welcome;

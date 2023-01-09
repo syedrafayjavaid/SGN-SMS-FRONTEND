@@ -13,8 +13,7 @@ import './videocall.css';
 
 import { Grid, Typography } from '@mui/material';
 import MainCard from 'components/MainCard';
-const Videocall = ({ username, callState }) => {
-
+const Dashboard = ({ username, callState }) => {
 
   useEffect(() => {
     webRTCHandler.getLocalStream();
@@ -43,9 +42,7 @@ const Videocall = ({ username, callState }) => {
       <br></br>
       <br></br>
       <hr></hr>
-      <br></br>
-      <br></br>
-      <br></br>
+
 
       <Grid container >
         <h2>
@@ -58,8 +55,7 @@ const Videocall = ({ username, callState }) => {
       <br></br>
       <br></br>
       <br></br>
-      <br></br>
-      <br></br>
+
 
       <Grid container spacing={1}>
         <GroupCall />
@@ -77,4 +73,4 @@ const mapStateToProps = ({ call, dashboard }) => ({
   ...dashboard
 });
 
-export default connect(mapStateToProps)(Videocall);
+export default connect(mapStateToProps)(Dashboard);

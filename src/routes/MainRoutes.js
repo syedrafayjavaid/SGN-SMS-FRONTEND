@@ -3,6 +3,10 @@ import { lazy } from 'react';
 // project import
 import Loadable from 'components/Loadable';
 import MainLayout from 'layout/MainLayout';
+import Videocall from 'pages/videocall/Videocall';
+import VideoCallType from 'pages/videocall/SelectionPage/SelectCallType';
+import DirectVideoCall from 'pages/videocall/directCall/DirectVideoCall';
+import GroupVideoCall from 'pages/videocall/groupCall/GroupVideoCall';
 
 
 
@@ -45,10 +49,10 @@ const AdmissionEdit = Loadable(lazy(() => import('pages/admission/AdmissionEdit'
 
 // Video call routes
 const WelcomeVideoCall = Loadable(lazy(() => import('pages/videocall/welcomePage/Welcome')));
-const Videocall = Loadable(lazy(() => import('pages/videocall/Videocall')));
-const VideoCallType = Loadable(lazy(() => import('pages/videocall/SelectionPage/SelectCallType')));
-const DirectVideoCall = Loadable(lazy(() => import('pages/videocall/directCall/DirectVideoCall')));
-const GroupVideoCall = Loadable(lazy(() => import('pages/videocall/groupCall/GroupVideoCall')));
+// const Videocall = Loadable(lazy(() => import('pages/videocall/Videocall')));
+// const VideoCallType = Loadable(lazy(() => import('pages/videocall/SelectionPage/SelectCallType')));
+// const DirectVideoCall = Loadable(lazy(() => import('pages/videocall/directCall/DirectVideoCall')));
+// const GroupVideoCall = Loadable(lazy(() => import('pages/videocall/groupCall/GroupVideoCall')));
 
 
 

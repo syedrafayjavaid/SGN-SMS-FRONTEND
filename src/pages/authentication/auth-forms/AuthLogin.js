@@ -65,7 +65,6 @@ const AuthLogin = () => {
 
         axios.post(`${environment.base_url}/api/v1/${type}/login`, data)
             .then((res) => {
-                console.log("The login response has", res.data.data);
                 if (res.data.token) {
                     const user = res.data.data;
                     window.sessionStorage.setItem("token", res.data.token)
@@ -79,6 +78,10 @@ const AuthLogin = () => {
                 if (error.response?.data.error) {
                     alert(error.response.data.error)
                 }
+                else if (error.message) {
+                    alert("Network error , please try again later")
+                }
+
             })
 
     }
@@ -219,8 +222,8 @@ const AuthLogin = () => {
                                     sx={{ '& .MuiButton-startIcon': { mr: matchDownSM ? 0 : 1, ml: matchDownSM ? 0 : -0.5 } }}
                                 >
                                     <Button
-                                        variant="outlined"
-                                        color="secondary"
+                                        variant={type === 'students' ? "contained" : 'outlined'}
+                                        color="primary"
                                         fullWidth={!matchDownSM}
                                         startIcon={<PersonIcon />}
                                         onClick={() => setType('students')}
@@ -228,8 +231,8 @@ const AuthLogin = () => {
                                         {"Student"}
                                     </Button>
                                     <Button
-                                        variant="outlined"
-                                        color="secondary"
+                                        variant={type === 'teachers' ? "contained" : 'outlined'}
+                                        color="primary"
                                         fullWidth={!matchDownSM}
                                         startIcon={<Person3Icon />}
                                         onClick={() => setType('teachers')}
@@ -237,8 +240,8 @@ const AuthLogin = () => {
                                         {'Teacher'}
                                     </Button>
                                     <Button
-                                        variant="outlined"
-                                        color="secondary"
+                                        variant={type === 'parents' ? "contained" : 'outlined'}
+                                        color="primary"
                                         fullWidth={!matchDownSM}
                                         startIcon={< Person4Icon />}
                                         onClick={() => setType('parents')}
